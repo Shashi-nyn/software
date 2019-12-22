@@ -1,0 +1,41 @@
+LIFE IS A BEAUTIFUL STRUGGLE, YOu Have to fight it.
+
+Command to start zookeeper
+WORKING 
+C:\Apache\zookeeper-3.5.6\bin\zkServer.cmd
+
+clientPort=2181
+
+
+
+command to start kafka server
+C:\Apache\kafka_2.12-2.3.0\bin\windows\kafka-server-start.bat  C:\Apache\kafka_2.12-2.3.0\config\server.properties
+
+ kafka-server-start.bat  C:\Apache\kafka_2.12-2.3.0\config\server1.properties
+ kafka-server-start.bat  C:\Apache\kafka_2.12-2.3.0\config\server2.properties
+
+
+
+Create topic 
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic myTopic1
+
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 3 --partitions 1 --topic myTopicReplicated
+
+Describe topic
+C:\Apache\kafka_2.12-2.3.0\bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181
+
+kafka-topics.bat --describe --bootstrap-server localhost:9092 --topic myTopic1
+
+kafka-topics.bat --describe --bootstrap-server localhost:9092 --topic myTopicReplicated
+
+
+initiating Producer
+kafka-console-producer.bat --broker-list localhost:9092 --topic myTopic1
+
+kafka-console-producer.bat --broker-list localhost:9092 --topic myTopicReplicated
+
+Initiating consumer
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --from-beginning --topic myTopic1
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --from-beginning --topic myTopicReplicated
+
